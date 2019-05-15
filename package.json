@@ -1,0 +1,36 @@
+{
+  "name": "backend-coding-challenge",
+  "version": "1.0.0",
+  "description": "(inspired by https://github.com/busbud/coding-challenge-backend-c)",
+  "main": "index.js",
+  "scripts": {
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megcblake/backend-coding-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megcblake/backend-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/megcblake/backend-coding-challenge#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "d3-dsv": "^1.1.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.19.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
