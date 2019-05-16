@@ -14,18 +14,19 @@ const retrieveDistance = (lat1, lon1, lat2, lon2) => {
   return 12742 * Math.asin(Math.sqrt(a));
 };
 
-const scoreDistance = (distance) => {
+const scoreDistance = (query, city) => {
+  const distance = retrieveDistance(query.latitude, query.longitude, city.lat, city.long);
   const maxDistance = 1000;
-  const score = distance / maxDistance;
-  return score;
+  const distanceScore = 1 - (distance / maxDistance);
+  return distanceScore;
 };
 
 const scoreCity = (query, city) => {
   const nameScore = scoreNames(query.q, city.name);
-  if (query.latitude && query.longitude && city.lat && city.long) {
-    const distance = retrieveDistance(query.latitude, query.longitude, city.lat, city.long);
-    const locationScore = scoreDistance(distance);
-    return Math.round((nameScore + locationScore) / 2, 1);
+  if (query.latitude && query.longitude && city.lat && city.long && nameScore > 0) {
+    const locationScore = scoreDistance(query, city);
+    const aggregate = (nameScore + locationScore) / 2;
+    return aggregate.toFixed(1);
   }
   return nameScore.toFixed(1);
 };
