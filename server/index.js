@@ -8,8 +8,10 @@ const { searchCities } = require('../helpers/searchCities');
 
 app.use('/', express.static(path.join(__dirname, './../client/dist')));
 
+app.set('json spaces', 2);
+
 app.get('/suggestions', (req, res) => {
-  res.send(searchCities(req.query, cities));
+  res.json(searchCities(req.query, cities));
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
